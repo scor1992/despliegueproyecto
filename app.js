@@ -4,7 +4,7 @@ const dbconnect = require("./config");
 const cors = require('cors');
 const app =express();
 
-const router = express.Router();
+//const router = express.Router();
 
 
 //crear
@@ -49,8 +49,8 @@ const router = express.Router();
 
 app.use(express.json());
 app.use(cors({origin:'*'}))
-app.use('api/empleados', require('/router/empleado.routers'));
-app.use(router);
+app.use('api/empleados', require('/routes/empleado.routes'));
+//app.use(router);
 app.listen(3005, ()=>{
     console.log("el servidor esta en puerto 3005")
 
