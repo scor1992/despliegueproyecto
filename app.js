@@ -1,6 +1,6 @@
 const express =require("express");
 const dbconnect = require("./config");
-const ModelUser = require("./model");
+const ModelEmpleado = require("./model");
 const app =express();
 
 const router = express.Router();
@@ -9,20 +9,20 @@ const router = express.Router();
 //crear
 router.post('/', async(req, res)=>{
     const body=req.body;
-    const respuesta = await ModelUser.create(body)
+    const respuesta = await ModelEmpleado.create(body)
     res.send(respuesta)
 })
 
 //consultar todo
 router.get('/', async(req, res)=>{
-     const respuesta = await ModelUser.find({})
+     const respuesta = await ModelEmpleado.find({})
      res.send(respuesta)
     })
 
 //consultar uno a uno
 router.get('/:id', async(req, res)=>{
     const id = req.params.id;
-    const respuesta = await ModelUser.findById({_id:id})
+    const respuesta = await ModelEmpleado.findById({_id:id})
     res.send(respuesta)
    })
 
@@ -30,7 +30,7 @@ router.get('/:id', async(req, res)=>{
    router.put('/:id', async(req, res)=>{
     const body=req.body;
     const id = req.params.id;
-    const respuesta = await ModelUser.findByIdAndUpdate({_id:id},body);
+    const respuesta = await ModelEmpleado.findByIdAndUpdate({_id:id},body);
     res.send(respuesta)
    })
 
@@ -39,7 +39,7 @@ router.get('/:id', async(req, res)=>{
    //eliminar
    router.delete('/:id', async(req, res)=>{
     const id = req.params.id;
-    const respuesta = await ModelUser.deleteOne({_id:id})
+    const respuesta = await ModelEmpleado.deleteOne({_id:id})
     res.send(respuesta)
    })
 
@@ -47,6 +47,7 @@ router.get('/:id', async(req, res)=>{
 
 
 app.use(express.json());
+app.use(cors({origin:'*'}))
 app.use(router);
 app.listen(3005, ()=>{
     console.log("el servidor esta en puerto 3005")

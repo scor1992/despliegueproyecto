@@ -1,7 +1,10 @@
 const mongoose=require('mongoose');
-const userModel=new mongoose.Schema(
+const empleadoModel=new mongoose.Schema(
     {
         nomempleado:{
+            type: String
+        },
+        lastnaempleado:{
             type: String
         },
         numberdocument:{
@@ -16,6 +19,6 @@ const userModel=new mongoose.Schema(
         versionKey:false,
     }
 )
-const ModelUser=mongoose.model("empleados", userModel);
-module.exports=ModelUser;
+const ModelEmpleado=mongoose.model("empleados", empleadoModel);
+module.exports=ModelEmpleado;
 
