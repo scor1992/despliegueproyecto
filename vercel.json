@@ -4,7 +4,7 @@
         {"src":"app.js", "use":"@vercel/node"}
     ],
     "routes":[
-        {"src":"/(*)", "det":"/app.js"}
+        {"src":"/(.*)", "det":"/app.js"}
     ],
     "env":{
         "NODE_ENV":"production"
